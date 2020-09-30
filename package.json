@@ -1,0 +1,59 @@
+{
+  "name": "q-xstate-auth",
+  "version": "0.0.1",
+  "description": "A Quasar Framework app",
+  "productName": "Quasar App",
+  "author": "Troy Moreland <49797484+34fame@users.noreply.github.com>",
+  "private": true,
+  "scripts": {
+    "test": "echo \"See package.json => scripts for available tests.\" && exit 0",
+    "test:unit": "jest --updateSnapshot",
+    "test:unit:coverage": "jest --coverage",
+    "test:unit:watch": "jest --watch",
+    "test:unit:watchAll": "jest --watchAll",
+    "serve:test:coverage": "quasar serve test/jest/coverage/lcov-report/ --port 8788",
+    "concurrently:dev:jest": "concurrently \"quasar dev\" \"jest --watch\"",
+    "test:e2e": "cross-env E2E_TEST=true start-test 'quasar dev' http-get://localhost:8080 'cypress open'",
+    "test:e2e:ci": "cross-env E2E_TEST=true start-test 'quasar dev' http-get://localhost:8080 'cypress run'"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.0.0",
+    "@xstate/inspect": "^0.1.1",
+    "auth0-js": "^9.14.0",
+    "axios": "^0.18.1",
+    "core-js": "^3.6.5",
+    "jwt-decode": "^3.0.0-beta.2",
+    "lodash": "^4.17.20",
+    "moment": "^2.29.0",
+    "quasar": "^1.0.0",
+    "vuejs-logger": "^1.5.4",
+    "xstate": "^4.13.0"
+  },
+  "devDependencies": {
+    "@quasar/app": "^2.0.0",
+    "@quasar/quasar-app-extension-dotenv": "^1.0.5",
+    "@quasar/quasar-app-extension-testing": "^1.0.0",
+    "@quasar/quasar-app-extension-testing-e2e-cypress": "^2.0.1",
+    "@quasar/quasar-app-extension-testing-unit-jest": "^2.0.0",
+    "eslint-plugin-cypress": "^2.11.1",
+    "eslint-plugin-jest": "^23.8.2",
+    "vue": "^2.6.12",
+    "vuex": "^3.5.1"
+  },
+  "browserslist": [
+    "last 10 Chrome versions",
+    "last 10 Firefox versions",
+    "last 4 Edge versions",
+    "last 7 Safari versions",
+    "last 8 Android versions",
+    "last 8 ChromeAndroid versions",
+    "last 8 FirefoxAndroid versions",
+    "last 10 iOS versions",
+    "last 5 Opera versions"
+  ],
+  "engines": {
+    "node": ">= 10.18.1",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}

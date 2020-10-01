@@ -1,7 +1,6 @@
 # XState with Authentication
 
-This Vue.js (with [Quasar Framework](https://quasar.dev)) sandbox demonstrates the use of [XState](https://xstate.js
-.org/) (finite state machines) while using external authentication services, in this case Auth0.
+This Vue.js (with [Quasar Framework](https://quasar.dev)) sandbox demonstrates the use of [XState](https://xstate.js.org/) (finite state machines) while using external authentication services, in this case Auth0.
 
 The problem for me was trying to keep my head wrapped around all of the different areas of the application that was
  tied to authentication, authorization, profile and registration.  Especially when dealing with authentication

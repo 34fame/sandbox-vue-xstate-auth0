@@ -43,16 +43,8 @@ export default {
          return this['auth/loggedIn']
       },
 
-      authContext() {
-         return authContext
-      },
-
       authState() {
          return authState
-      },
-
-      authService() {
-         return JSON.stringify(authService.state, null, 3)
       },
    },
 
@@ -61,9 +53,7 @@ export default {
    },
 
    mounted() {
-      console.log('Index - mounted')
       if (ss.getItem('access_token') && !this['auth/loggedIn']) {
-         console.log('Index - mounted', 'login')
          this['auth/login'](ss.getItem('user'))
       }
    },

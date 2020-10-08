@@ -101,22 +101,16 @@ export const authMachine = Machine(
 
          verifying: {
             entry: log('verifying - entry'),
-            always: [
-               {
-                  target: 'authenticated',
-                  cond: 'userExists'
-               },
-               {
-                  target: 'registering'
-               }
-            ],
+
+            invoke: {
+               src: 'userExists',
+               onDone: 'authenticated',
+               onError: 'registering',
+            },
          },
 
          registering: {
-            entry: [
-               log('registering - entry'),
-               'register',
-            ],
+            entry: log('registering - entry'),
 
             on: {
                CANCEL: 'loggingOut',
@@ -166,7 +160,6 @@ export const authMachine = Machine(
          registerError: {
             entry: log('registerError - entry'),
          },
-
       },
    },
 
@@ -184,12 +177,6 @@ export const authMachine = Machine(
 
          hasPersistedProfile: () => {
             return !!ss.getItem('user')
-         },
-
-         userExists: (context) => {
-            const dbUsers = api.getUsers()
-            const match = dbUsers.filter(u => u.email === context.user.email)
-            return !!match.length;
          },
       },
 
@@ -219,6 +206,15 @@ export const authMachine = Machine(
             })
          },
 
+         userExists: (context) => {
+            const dbUsers = api.getUsers()
+            const match = dbUsers.filter((u) => u.email === context.user.email)
+            if (!!match.length) {
+               return true
+            } else {
+               throw 'Throw error to initiate registering'
+            }
+         },
       },
-   },
+   }
 )
